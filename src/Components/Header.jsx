@@ -1,7 +1,14 @@
 import { Link } from 'react-router-dom';
 import { FiSearch, FiBell, FiUser } from 'react-icons/fi';
-
+import { useNavigate } from 'react-router-dom';
 const Header = () => {
+
+
+const navigate = useNavigate();
+const handleAccountOverview = () => {
+  navigate('/account');
+};
+
   return (
     <header className="bg-white shadow-sm">
       <div className="container d-flex align-items-center justify-content-between py-3">
@@ -26,10 +33,14 @@ const Header = () => {
 
         {/* Icon Buttons */}
         <div className="d-flex align-items-center gap-3">
-          <button className="btn btn-light p-2 rounded-circle shadow-sm">
+          <button className="btn btn-light p-2 rounded-circle shadow-sm" title="Notifications">
             <FiBell className="text-secondary" />
           </button>
-          <button className="btn btn-light p-2 rounded-circle shadow-sm">
+          <button
+            className="btn btn-light p-2 rounded-circle shadow-sm"
+            title="Account Overview"
+            onClick={handleAccountOverview}
+          >
             <FiUser className="text-secondary" />
           </button>
         </div>
