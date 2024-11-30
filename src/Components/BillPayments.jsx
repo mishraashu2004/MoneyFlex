@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiArrowLeft, FiSearch, FiPlus, FiZap, FiWifi, FiUmbrella, FiToggleLeft, FiToggleRight } from 'react-icons/fi';
+import { FiArrowLeft, FiSearch, FiPlus, FiZap, FiWifi, FiUmbrella, FiToggleLeft } from 'react-icons/fi';
 
 const BillPayments = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -30,22 +30,24 @@ const BillPayments = () => {
   });
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
-      <header className="bg-white shadow-md p-4">
-        <div className="container mx-auto flex items-center justify-between">
-          <Link to="/" className="text-blue-600">
-            <FiArrowLeft className="text-2xl" />
+    <div className="d-flex flex-column min-vh-100 bg-light">
+      {/* Header */}
+      <header className="bg-white shadow-sm p-4">
+        <div className="container d-flex justify-content-between align-items-center">
+          <Link to="/" className="text-primary">
+            <FiArrowLeft className="fs-3" />
           </Link>
-          <h1 className="text-2xl font-bold">Bill Payments</h1>
-          <div></div>
+          <h1 className="h4 mb-0">Bill Payments</h1>
         </div>
       </header>
 
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <div className="flex flex-wrap items-center justify-between mb-4">
+      {/* Main Content */}
+      <main className="flex-grow-1 container px-4 py-5">
+        <div className="bg-white rounded shadow-sm p-4 mb-4">
+          <div className="d-flex justify-content-between mb-3">
+            {/* Category Filter */}
             <select
-              className="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="form-select w-auto"
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
@@ -54,24 +56,30 @@ const BillPayments = () => {
                 <option key={category.id} value={category.id}>{category.name}</option>
               ))}
             </select>
-            <div className="relative mt-4 sm:mt-0">
+
+            {/* Search Bar */}
+            <div className="position-relative w-50">
               <input
                 type="text"
+                className="form-control ps-5"
                 placeholder="Search billers..."
-                className="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <FiSearch className="position-absolute top-50 start-0 translate-middle-y ms-2 text-muted" />
             </div>
           </div>
-          <button className="w-full bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mb-6">
-            <FiPlus className="inline-block mr-2" /> Add New Biller
+
+          {/* Add Biller Button */}
+          <button className="btn btn-primary w-100 mb-4">
+            <FiPlus className="me-2" /> Add New Biller
           </button>
-          <div className="flex justify-between mb-4">
-            <h2 className="text-xl font-semibold">Recent Payments</h2>
+
+          {/* Payment Status Filter */}
+          <div className="d-flex justify-content-between mb-3">
+            <h2 className="h5">Recent Payments</h2>
             <select
-              className="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="form-select w-auto"
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
             >
@@ -80,37 +88,38 @@ const BillPayments = () => {
               <option value="pending">Pending</option>
             </select>
           </div>
-          <ul className="space-y-4">
+
+          {/* Payment List */}
+          <ul className="list-unstyled">
             {filteredPayments.map(payment => (
-              <li key={payment.id} className="flex justify-between items-center border-b pb-2">
+              <li key={payment.id} className="d-flex justify-content-between align-items-center border-bottom py-2">
                 <div>
-                  <p className="font-semibold">{payment.biller}</p>
-                  <p className="text-sm text-gray-600">{payment.date}</p>
-                  <span className={`text-xs px-2 py-1 rounded-full ${
-                    payment.status === 'completed' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'
-                  }`}>
+                  <p className="fw-bold mb-0">{payment.biller}</p>
+                  <p className="text-muted mb-0">{payment.date}</p>
+                  <span className={`badge ${payment.status === 'completed' ? 'bg-success' : 'bg-warning'}`}>
                     {payment.status}
                   </span>
                 </div>
-                <div className="text-right">
-                  <p className="font-semibold">${payment.amount.toFixed(2)}</p>
-                  <button className="text-blue-600 hover:underline text-sm">Pay Again</button>
+                <div className="text-end">
+                  <p className="fw-bold mb-0">${payment.amount.toFixed(2)}</p>
+                  <button className="btn btn-link text-primary btn-sm">Pay Again</button>
                 </div>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold mb-4">Auto-Pay Options</h2>
-          <ul className="space-y-4">
+        {/* Auto-Pay Options */}
+        <div className="bg-white rounded shadow-sm p-4">
+          <h2 className="h5 mb-3">Auto-Pay Options</h2>
+          <ul className="list-unstyled">
             {categories.map(category => (
-              <li key={category.id} className="flex justify-between items-center">
-                <div className="flex items-center">
-                  <span className="text-blue-600 mr-2">{category.icon}</span>
+              <li key={category.id} className="d-flex justify-content-between align-items-center mb-3">
+                <div className="d-flex align-items-center">
+                  <span className="text-primary me-2">{category.icon}</span>
                   <span>{category.name}</span>
                 </div>
-                <button className="text-2xl text-blue-600">
+                <button className="btn btn-link text-primary fs-4">
                   <FiToggleLeft />
                 </button>
               </li>
@@ -119,14 +128,15 @@ const BillPayments = () => {
         </div>
       </main>
 
-      <nav className="bg-blue-600 text-white py-4">
-        <div className="container mx-auto px-4">
-          <ul className="flex justify-between items-center">
-            <li><Link to="/" className="text-sm">Home</Link></li>
-            <li><Link to="/transfer" className="text-sm">Transfer</Link></li>
-            <li><Link to="/bills" className="text-sm">Bills</Link></li>
-            <li><Link to="/invest" className="text-sm">Invest</Link></li>
-            <li><Link to="/more" className="text-sm">More</Link></li>
+      {/* Footer Navigation */}
+      <nav className="bg-primary text-white py-3">
+        <div className="container">
+          <ul className="d-flex justify-content-between mb-0">
+            <li><Link to="/" className="text-white">Home</Link></li>
+            <li><Link to="/transfer" className="text-white">Transfer</Link></li>
+            <li><Link to="/bills" className="text-white">Bills</Link></li>
+            <li><Link to="/invest" className="text-white">Invest</Link></li>
+            <li><Link to="/more" className="text-white">More</Link></li>
           </ul>
         </div>
       </nav>
@@ -135,4 +145,3 @@ const BillPayments = () => {
 };
 
 export default BillPayments;
-

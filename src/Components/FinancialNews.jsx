@@ -1,4 +1,3 @@
-
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 const FinancialNews = () => {
@@ -9,22 +8,37 @@ const FinancialNews = () => {
   ];
 
   return (
-    <section className="mt-8">
-      <h2 className="text-2xl font-semibold mb-4">Financial News & Insights</h2>
-      <div className="relative">
-        <div className="overflow-x-auto flex space-x-6 pb-4">
+    <section className="mt-5">
+      <h2 className="text-center display-5 mb-4">Financial News & Insights</h2>
+      <div className="position-relative">
+        {/* News Cards Container */}
+        <div className="d-flex overflow-auto pb-3">
           {news.map((item, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-md w-80 flex-shrink-0">
-              <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-              <p className="text-gray-600 text-sm">{item.date}</p>
+            <div
+              key={index}
+              className="card flex-shrink-0 mx-2"
+              style={{ width: '18rem', minWidth: '18rem' }}
+            >
+              <div className="card-body">
+                <h5 className="card-title mb-3">{item.title}</h5>
+                <p className="card-text text-muted small">{item.date}</p>
+              </div>
             </div>
           ))}
         </div>
-        <button className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md">
-          <FiChevronLeft className="text-2xl text-gray-600" />
+
+        {/* Navigation Buttons */}
+        <button
+          className="btn btn-light position-absolute top-50 start-0 translate-middle-y shadow"
+          style={{ zIndex: 1 }}
+        >
+          <FiChevronLeft className="fs-3 text-secondary" />
         </button>
-        <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md">
-          <FiChevronRight className="text-2xl text-gray-600" />
+        <button
+          className="btn btn-light position-absolute top-50 end-0 translate-middle-y shadow"
+          style={{ zIndex: 1 }}
+        >
+          <FiChevronRight className="fs-3 text-secondary" />
         </button>
       </div>
     </section>
@@ -32,4 +46,3 @@ const FinancialNews = () => {
 };
 
 export default FinancialNews;
-

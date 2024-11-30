@@ -4,37 +4,37 @@ import { FiHome, FiSend, FiFileText, FiTrendingUp, FiMoreHorizontal } from 'reac
 
 const Navigation = () => {
   return (
-    <nav className="bg-blue-600 text-white">
-      <div className="container mx-auto px-4">
-        <ul className="flex justify-between items-center py-3">
-          <li>
-            <Link to="/" className="flex flex-col items-center">
-              <FiHome className="text-2xl" />
-              <span className="text-xs mt-1">Home</span>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div className="container-fluid">
+        <ul className="navbar-nav d-flex justify-content-between w-100">
+          <li className="nav-item">
+            <Link to="/" className="nav-link text-center">
+              <FiHome className="fs-2" />
+              <span className="d-block fs-6">Home</span>
             </Link>
           </li>
-          <li>
-            <Link to="/transfer" className="flex flex-col items-center">
-              <FiSend className="text-2xl" />
-              <span className="text-xs mt-1">Transfer</span>
+          <li className="nav-item">
+            <Link to="/transfer" className="nav-link text-center">
+              <FiSend className="fs-2" />
+              <span className="d-block fs-6">Transfer</span>
             </Link>
           </li>
-          <li>
-            <Link to="/bills" className="flex flex-col items-center">
-              <FiFileText className="text-2xl" />
-              <span className="text-xs mt-1">Bills</span>
+          <li className="nav-item">
+            <Link to="/bills" className="nav-link text-center">
+              <FiFileText className="fs-2" />
+              <span className="d-block fs-6">Bills</span>
             </Link>
           </li>
-          <li>
-            <Link to="/invest" className="flex flex-col items-center">
-              <FiTrendingUp className="text-2xl" />
-              <span className="text-xs mt-1">Invest</span>
+          <li className="nav-item">
+            <Link to="/invest" className="nav-link text-center">
+              <FiTrendingUp className="fs-2" />
+              <span className="d-block fs-6">Invest</span>
             </Link>
           </li>
-          <li>
-            <Link to="/more" className="flex flex-col items-center">
-              <FiMoreHorizontal className="text-2xl" />
-              <span className="text-xs mt-1">More</span>
+          <li className="nav-item">
+            <Link to="/more" className="nav-link text-center">
+              <FiMoreHorizontal className="fs-2" />
+              <span className="d-block fs-6">More</span>
             </Link>
           </li>
         </ul>
@@ -44,4 +44,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-

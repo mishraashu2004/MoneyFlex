@@ -1,39 +1,44 @@
-
 import { FiDollarSign, FiArrowUpRight, FiArrowDownRight } from 'react-icons/fi';
 
 const FinancialOverview = () => {
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold mb-4">Financial Overview</h2>
-      <div className="mb-4">
-        <p className="text-gray-600">Net Worth</p>
-        <p className="text-3xl font-bold flex items-center">
-          <FiDollarSign className="text-green-500 mr-1" />
-          85,420.00
-        </p>
-      </div>
-      <div>
-        <h3 className="font-semibold mb-2">Recent Transactions</h3>
-        <ul className="space-y-2">
-          <li className="flex justify-between items-center">
-            <span>Grocery Store</span>
-            <span className="flex items-center text-red-500">
-              <FiArrowDownRight className="mr-1" />
-              $52.36
-            </span>
-          </li>
-          <li className="flex justify-between items-center">
-            <span>Salary Deposit</span>
-            <span className="flex items-center text-green-500">
-              <FiArrowUpRight className="mr-1" />
-              $3,500.00
-            </span>
-          </li>
-        </ul>
+    <div className="card shadow-sm">
+      <div className="card-body">
+        {/* Header */}
+        <h2 className="card-title fs-4 mb-4">Financial Overview</h2>
+        
+        {/* Net Worth Section */}
+        <div className="mb-4">
+          <p className="text-muted mb-1">Net Worth</p>
+          <p className="display-5 fw-bold text-success d-flex align-items-center">
+            <FiDollarSign className="me-1" />
+            85,420.00
+          </p>
+        </div>
+
+        {/* Recent Transactions */}
+        <div>
+          <h3 className="fw-semibold mb-3">Recent Transactions</h3>
+          <ul className="list-group">
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              <span>Grocery Store</span>
+              <span className="text-danger d-flex align-items-center">
+                <FiArrowDownRight className="me-1" />
+                $52.36
+              </span>
+            </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center">
+              <span>Salary Deposit</span>
+              <span className="text-success d-flex align-items-center">
+                <FiArrowUpRight className="me-1" />
+                $3,500.00
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
 };
 
 export default FinancialOverview;
-

@@ -1,4 +1,3 @@
-
 import { FiSend, FiFileText, FiCreditCard, FiPieChart } from 'react-icons/fi';
 
 const QuickActions = () => {
@@ -10,17 +9,18 @@ const QuickActions = () => {
   ];
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
-      <div className="grid grid-cols-2 gap-4">
+    <div className="bg-white p-4 rounded shadow-sm">
+      <h2 className="h4 mb-4">Quick Actions</h2>
+      <div className="row row-cols-2 row-cols-md-4 g-3">
         {actions.map((action, index) => (
-          <button
-            key={index}
-            className="flex flex-col items-center justify-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
-          >
-            <span className="text-2xl text-blue-600 mb-2">{action.icon}</span>
-            <span className="text-sm text-gray-700">{action.label}</span>
-          </button>
+          <div key={index} className="col">
+            <button
+              className="btn btn-outline-primary w-100 d-flex flex-column align-items-center py-3 rounded-3"
+            >
+              <span className="fs-1 text-primary mb-2">{action.icon}</span>
+              <span className="text-center text-muted">{action.label}</span>
+            </button>
+          </div>
         ))}
       </div>
     </div>
@@ -28,4 +28,3 @@ const QuickActions = () => {
 };
 
 export default QuickActions;
-

@@ -51,30 +51,33 @@ const Investments = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
-      <header className="bg-white shadow-md p-4">
-        <div className="container mx-auto flex items-center justify-between">
-          <Link to="/" className="text-blue-600">
-            <FiArrowLeft className="text-2xl" />
+    <div className="d-flex flex-column min-vh-100 bg-light">
+      {/* Header */}
+      <header className="bg-white shadow-sm py-3">
+        <div className="container d-flex align-items-center justify-content-between">
+          <Link to="/" className="text-primary">
+            <FiArrowLeft className="fs-2" />
           </Link>
-          <h1 className="text-2xl font-bold">Investments</h1>
+          <h1 className="fs-3 fw-bold">Investments</h1>
           <div></div>
         </div>
       </header>
 
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <h2 className="text-xl font-semibold mb-4">Portfolio Overview</h2>
-          <div className="flex justify-between items-center mb-6">
+      <main className="flex-grow-1 container py-5">
+        {/* Portfolio Overview */}
+        <div className="bg-white rounded-lg shadow-sm p-4 mb-5">
+          <h2 className="fs-4 fw-semibold mb-4">Portfolio Overview</h2>
+          <div className="d-flex justify-content-between align-items-center mb-4">
             <div>
-              <p className="text-gray-600">Total Value</p>
-              <p className="text-3xl font-bold">${portfolioValue.toLocaleString()}</p>
+              <p className="text-muted">Total Value</p>
+              <p className="fs-3 fw-bold">${portfolioValue.toLocaleString()}</p>
             </div>
-            <div className={`flex items-center ${portfolioChange >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-              {portfolioChange >= 0 ? <FiTrendingUp className="mr-1" /> : <FiTrendingDown className="mr-1" />}
-              <span className="font-semibold">{portfolioChange}%</span>
+            <div className={`d-flex align-items-center ${portfolioChange >= 0 ? 'text-success' : 'text-danger'}`}>
+              {portfolioChange >= 0 ? <FiTrendingUp className="me-1" /> : <FiTrendingDown className="me-1" />}
+              <span className="fw-semibold">{portfolioChange}%</span>
             </div>
           </div>
+
           <ResponsiveContainer width="100%" height={200}>
             <LineChart data={portfolioData}>
               <XAxis dataKey="name" />
@@ -85,89 +88,94 @@ const Investments = () => {
           </ResponsiveContainer>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4">Asset Allocation</h2>
-            <ResponsiveContainer width="100%" height={200}>
-              <PieChart>
-                <Pie
-                  data={assetAllocation}
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={80}
-                  fill="#8884d8"
-                  dataKey="value"
-                  label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-                >
-                  {assetAllocation.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Pie>
-                <Tooltip />
-              </PieChart>
-            </ResponsiveContainer>
+        {/* Asset Allocation and Recommendations */}
+        <div className="row g-4 mb-5">
+          {/* Asset Allocation */}
+          <div className="col-md-6">
+            <div className="bg-white rounded-lg shadow-sm p-4">
+              <h2 className="fs-4 fw-semibold mb-4">Asset Allocation</h2>
+              <ResponsiveContainer width="100%" height={200}>
+                <PieChart>
+                  <Pie
+                    data={assetAllocation}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    fill="#8884d8"
+                    dataKey="value"
+                    label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  >
+                    {assetAllocation.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
           </div>
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-4">Investment Recommendations</h2>
-            <ul className="space-y-4">
-              {recommendations.map((rec, index) => (
-                <li key={index} className="flex justify-between items-center">
-                  <div>
-                    <p className="font-semibold">{rec.name}</p>
-                    <p className="text-sm text-gray-600">{rec.type}</p>
-                  </div>
-                  <span className={`px-2 py-1 rounded-full text-xs ${
-                    rec.risk === 'High' ? 'bg-red-100 text-red-800' :
-                    rec.risk === 'Medium' ? 'bg-yellow-100 text-yellow-800' :
-                    'bg-green-100 text-green-800'
-                  }`}>
-                    {rec.risk} Risk
-                  </span>
-                </li>
-              ))}
-            </ul>
+
+          {/* Investment Recommendations */}
+          <div className="col-md-6">
+            <div className="bg-white rounded-lg shadow-sm p-4">
+              <h2 className="fs-4 fw-semibold mb-4">Investment Recommendations</h2>
+              <ul className="list-unstyled">
+                {recommendations.map((rec, index) => (
+                  <li key={index} className="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                      <p className="fw-semibold">{rec.name}</p>
+                      <p className="text-muted small">{rec.type}</p>
+                    </div>
+                    <span className={`badge ${rec.risk === 'High' ? 'bg-danger' : rec.risk === 'Medium' ? 'bg-warning' : 'bg-success'}`}>
+                      {rec.risk} Risk
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold mb-4">Investment Calculator</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-            <div>
-              <label htmlFor="amount" className="block text-sm font-medium text-gray-700 mb-1">Initial Amount ($)</label>
+        {/* Investment Calculator */}
+        <div className="bg-white rounded-lg shadow-sm p-4">
+          <h2 className="fs-4 fw-semibold mb-4">Investment Calculator</h2>
+          <div className="row g-3 mb-4">
+            <div className="col-md-4">
+              <label htmlFor="amount" className="form-label">Initial Amount ($)</label>
               <input
                 type="number"
                 id="amount"
                 name="amount"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="form-control"
                 value={calculatorValues.amount}
                 onChange={handleCalculatorChange}
               />
             </div>
-            <div>
-              <label htmlFor="tenure" className="block text-sm font-medium text-gray-700 mb-1">Tenure (Years)</label>
+            <div className="col-md-4">
+              <label htmlFor="tenure" className="form-label">Tenure (Years)</label>
               <input
                 type="number"
                 id="tenure"
                 name="tenure"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="form-control"
                 value={calculatorValues.tenure}
                 onChange={handleCalculatorChange}
               />
             </div>
-            <div>
-              <label htmlFor="interest" className="block text-sm font-medium text-gray-700 mb-1">Interest Rate (%)</label>
+            <div className="col-md-4">
+              <label htmlFor="interest" className="form-label">Interest Rate (%)</label>
               <input
                 type="number"
                 id="interest"
                 name="interest"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="form-control"
                 value={calculatorValues.interest}
                 onChange={handleCalculatorChange}
               />
             </div>
           </div>
           <button
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="btn btn-primary w-100"
             onClick={() => alert(`Future Value: $${calculateInvestment()}`)}
           >
             Calculate
@@ -175,20 +183,20 @@ const Investments = () => {
         </div>
       </main>
 
-      <nav className="bg-blue-600 text-white py-4">
-        <div className="container mx-auto px-4">
-          <ul className="flex justify-between items-center">
-            <li><Link to="/" className="text-sm">Home</Link></li>
-            <li><Link to="/transfer" className="text-sm">Transfer</Link></li>
-            <li><Link to="/bills" className="text-sm">Bills</Link></li>
-            <li><Link to="/invest" className="text-sm">Invest</Link></li>
-            <li><Link to="/more" className="text-sm">More</Link></li>
+      {/* Footer Navigation */}
+      <footer className="bg-primary text-white py-3">
+        <div className="container">
+          <ul className="d-flex justify-content-between list-unstyled">
+            <li><Link to="/" className="text-white">Home</Link></li>
+            <li><Link to="/transfer" className="text-white">Transfer</Link></li>
+            <li><Link to="/bills" className="text-white">Bills</Link></li>
+            <li><Link to="/invest" className="text-white">Invest</Link></li>
+            <li><Link to="/more" className="text-white">More</Link></li>
           </ul>
         </div>
-      </nav>
+      </footer>
     </div>
   );
 };
 
 export default Investments;
-

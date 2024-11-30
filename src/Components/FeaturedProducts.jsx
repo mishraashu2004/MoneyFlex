@@ -1,4 +1,3 @@
-
 import { FiArrowRight } from 'react-icons/fi';
 
 const FeaturedProducts = () => {
@@ -9,16 +8,20 @@ const FeaturedProducts = () => {
   ];
 
   return (
-    <section className="mt-8">
-      <h2 className="text-2xl font-semibold mb-4">Featured Products</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <section className="mt-4">
+      <h2 className="text-center display-5 mb-4">Featured Products</h2>
+      <div className="row g-4">
         {products.map((product, index) => (
-          <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold mb-2">{product.title}</h3>
-            <p className="text-gray-600 mb-4">{product.description}</p>
-            <button className="text-blue-600 font-semibold flex items-center">
-              Learn More <FiArrowRight className="ml-2" />
-            </button>
+          <div key={index} className="col-md-4">
+            <div className="card h-100 shadow">
+              <div className="card-body">
+                <h3 className="card-title h5 mb-3">{product.title}</h3>
+                <p className="card-text text-secondary mb-4">{product.description}</p>
+                <button className="btn btn-link text-primary d-flex align-items-center">
+                  Learn More <FiArrowRight className="ms-2" />
+                </button>
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -27,4 +30,3 @@ const FeaturedProducts = () => {
 };
 
 export default FeaturedProducts;
-
