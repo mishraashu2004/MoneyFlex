@@ -1,40 +1,32 @@
-import { FiDollarSign, FiArrowUpRight, FiArrowDownRight } from 'react-icons/fi';
-
 const FinancialOverview = () => {
   return (
-    <div className="card shadow-sm">
-      <div className="card-body">
-        {/* Header */}
-        <h2 className="card-title fs-4 mb-4">Financial Overview</h2>
-        
-        {/* Net Worth Section */}
-        <div className="mb-4">
-          <p className="text-muted mb-1">Net Worth</p>
-          <p className="display-5 fw-bold text-success d-flex align-items-center">
-            <FiDollarSign className="me-1" />
-            85,420.00
-          </p>
+    <div className="bg-[#08566e] text-[#b4dbdc] p-6 rounded-xl shadow-lg w-full">
+      <h2 className="text-2xl font-semibold mb-4">Financial Overview</h2>
+      
+      {/* Grid Layout for Account Balance and Pending Payments */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Account Balance */}
+        <div className="bg-[#1a202c] p-6 rounded-lg shadow-md">
+          <h3 className="font-medium text-[#b4dbdc]">Account Balance</h3>
+          <p className="text-lg font-semibold">₹50,000.00</p>
         </div>
 
-        {/* Recent Transactions */}
-        <div>
-          <h3 className="fw-semibold mb-3">Recent Transactions</h3>
-          <ul className="list-group">
-            <li className="list-group-item d-flex justify-content-between align-items-center">
-              <span>Grocery Store</span>
-              <span className="text-danger d-flex align-items-center">
-                <FiArrowDownRight className="me-1" />
-                $52.36
-              </span>
-            </li>
-            <li className="list-group-item d-flex justify-content-between align-items-center">
-              <span>Salary Deposit</span>
-              <span className="text-success d-flex align-items-center">
-                <FiArrowUpRight className="me-1" />
-                $3,500.00
-              </span>
-            </li>
-          </ul>
+        {/* Pending Payments */}
+        <div className="bg-[#1a202c] p-6 rounded-lg shadow-md">
+          <h3 className="font-medium text-[#b4dbdc]">Pending Payments</h3>
+          <p className="text-lg font-semibold">₹3,200.00</p>
+        </div>
+      </div>
+
+      {/* Additional Financial Data */}
+      <div className="mt-6">
+        <div className="bg-[#1a202c] p-6 rounded-lg shadow-md mb-4">
+          <h3 className="font-medium text-[#b4dbdc]">Loans Outstanding</h3>
+          <p className="text-lg font-semibold">₹15,000.00</p>
+        </div>
+        <div className="bg-[#1a202c] p-6 rounded-lg shadow-md">
+          <h3 className="font-medium text-[#b4dbdc]">Credit Score</h3>
+          <p className="text-lg font-semibold">780</p>
         </div>
       </div>
     </div>

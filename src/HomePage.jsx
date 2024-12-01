@@ -1,30 +1,55 @@
-
 import Header from './Components/Header';
 import Navigation from './components/Navigation';
 import FinancialOverview from './Components/FinancialOverview';
 import QuickActions from './Components/QuickActions';
 import FeaturedProducts from './Components/FeaturedProducts';
 import FinancialNews from './Components/FinancialNews';
+import AccountSelector from './Components/AccountSelector';
+
 const HomePage = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
+    <div className="flex flex-col min-h-screen bg-[#1a202c] text-[#b4dbdc]">
+      {/* Header */}
       <Header />
+      
+      {/* Navigation */}
       <Navigation />
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-6">Welcome, John Doe</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <FinancialOverview />
-          <QuickActions />
+
+      {/* Account Selector */}
+      <AccountSelector />
+
+      <main className="flex-grow container mx-auto px-6 py-8">
+        {/* Welcome Message */}
+        <h1 className="text-4xl font-semibold mb-6 text-[#b4dbdc]">Welcome, User</h1>
+        
+        {/* Main Content Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Financial Overview */}
+          <div className="lg:col-span-1">
+            <FinancialOverview />
+          </div>
+
+          {/* Quick Actions */}
+          <div className="lg:col-span-1 w-full">
+            <QuickActions />
+          </div>
         </div>
-        <FeaturedProducts />
-        <FinancialNews />
+
+        {/* Featured Products Section */}
+        <div className="mt-10">
+          <FeaturedProducts />
+        </div>
+
+        {/* Optional Financial News Section */}
+        {/* <FinancialNews /> Uncomment if you need this */}
       </main>
-      <footer className="bg-gray-800 text-white py-4 text-center">
-        <p>&copy; 2024 FinTech App. All rights reserved.</p>
+
+      {/* Footer */}
+      <footer className="bg-[#08566e] text-white py-4 text-center mt-auto">
+        <p>&copy; 2024 MoneyFlex App. All rights reserved.</p>
       </footer>
     </div>
   );
 };
 
 export default HomePage;
-

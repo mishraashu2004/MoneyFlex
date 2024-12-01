@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiArrowLeft, FiDollarSign, FiTrendingUp, FiTrendingDown } from 'react-icons/fi';
-import { LineChart, Line, PieChart, Pie, Cell, ResponsiveContainer, XAxis, YAxis, Tooltip, Legend } from 'recharts';
+import { FiArrowLeft, FiTrendingUp, FiTrendingDown } from 'react-icons/fi';
+import { LineChart, Line, PieChart, Pie, Cell, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts';
 
 const Investments = () => {
   const [calculatorValues, setCalculatorValues] = useState({
@@ -28,7 +28,7 @@ const Investments = () => {
     { name: 'Cash', value: 10 },
   ];
 
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
+  const COLORS = ['#08566e', '#2ECC71', '#E74C3C']; // Dark Teal, Green, Red
 
   const recommendations = [
     { name: 'Tech Growth Fund', type: 'Mutual Fund', risk: 'High' },
@@ -51,26 +51,26 @@ const Investments = () => {
   };
 
   return (
-    <div className="d-flex flex-column min-vh-100 bg-light">
+    <div className="d-flex flex-column min-vh-100 bg-dark text-light">
       {/* Header */}
-      <header className="bg-white shadow-sm py-3">
+      <header className="bg-[#08566e] shadow-sm py-3">
         <div className="container d-flex align-items-center justify-content-between">
-          <Link to="/" className="text-primary">
+          <Link to="/" className="text-[#b4dbdc]">
             <FiArrowLeft className="fs-2" />
           </Link>
-          <h1 className="fs-3 fw-bold">Investments</h1>
+          <h1 className="fs-3 fw-bold text-[#b4dbdc]">Investments</h1>
           <div></div>
         </div>
       </header>
 
       <main className="flex-grow-1 container py-5">
         {/* Portfolio Overview */}
-        <div className="bg-white rounded-lg shadow-sm p-4 mb-5">
-          <h2 className="fs-4 fw-semibold mb-4">Portfolio Overview</h2>
+        <div className="bg-[#08566e] rounded-lg shadow-sm p-4 mb-5">
+          <h2 className="fs-4 fw-semibold mb-4 text-[#b4dbdc]">Portfolio Overview</h2>
           <div className="d-flex justify-content-between align-items-center mb-4">
             <div>
               <p className="text-muted">Total Value</p>
-              <p className="fs-3 fw-bold">${portfolioValue.toLocaleString()}</p>
+              <p className="fs-3 fw-bold text-[#b4dbdc]">${portfolioValue.toLocaleString()}</p>
             </div>
             <div className={`d-flex align-items-center ${portfolioChange >= 0 ? 'text-success' : 'text-danger'}`}>
               {portfolioChange >= 0 ? <FiTrendingUp className="me-1" /> : <FiTrendingDown className="me-1" />}
@@ -83,7 +83,7 @@ const Investments = () => {
               <XAxis dataKey="name" />
               <YAxis />
               <Tooltip />
-              <Line type="monotone" dataKey="value" stroke="#8884d8" />
+              <Line type="monotone" dataKey="value" stroke="#b4dbdc" />
             </LineChart>
           </ResponsiveContainer>
         </div>
@@ -92,8 +92,8 @@ const Investments = () => {
         <div className="row g-4 mb-5">
           {/* Asset Allocation */}
           <div className="col-md-6">
-            <div className="bg-white rounded-lg shadow-sm p-4">
-              <h2 className="fs-4 fw-semibold mb-4">Asset Allocation</h2>
+            <div className="bg-[#08566e] rounded-lg shadow-sm p-4">
+              <h2 className="fs-4 fw-semibold mb-4 text-[#b4dbdc]">Asset Allocation</h2>
               <ResponsiveContainer width="100%" height={200}>
                 <PieChart>
                   <Pie
@@ -117,14 +117,14 @@ const Investments = () => {
 
           {/* Investment Recommendations */}
           <div className="col-md-6">
-            <div className="bg-white rounded-lg shadow-sm p-4">
-              <h2 className="fs-4 fw-semibold mb-4">Investment Recommendations</h2>
+            <div className="bg-[#08566e] rounded-lg shadow-sm p-4">
+              <h2 className="fs-4 fw-semibold mb-4 text-[#b4dbdc]">Investment Recommendations</h2>
               <ul className="list-unstyled">
                 {recommendations.map((rec, index) => (
                   <li key={index} className="d-flex justify-content-between align-items-center mb-3">
                     <div>
                       <p className="fw-semibold">{rec.name}</p>
-                      <p className="text-muted small">{rec.type}</p>
+                      <p className="text-muted small text-fuchsia-50">1{rec.type}</p>
                     </div>
                     <span className={`badge ${rec.risk === 'High' ? 'bg-danger' : rec.risk === 'Medium' ? 'bg-warning' : 'bg-success'}`}>
                       {rec.risk} Risk
@@ -137,11 +137,11 @@ const Investments = () => {
         </div>
 
         {/* Investment Calculator */}
-        <div className="bg-white rounded-lg shadow-sm p-4">
-          <h2 className="fs-4 fw-semibold mb-4">Investment Calculator</h2>
+        <div className="bg-[#08566e] rounded-lg shadow-sm p-4">
+          <h2 className="fs-4 fw-semibold mb-4 text-[#b4dbdc]">Investment Calculator</h2>
           <div className="row g-3 mb-4">
             <div className="col-md-4">
-              <label htmlFor="amount" className="form-label">Initial Amount ($)</label>
+              <label htmlFor="amount" className="form-label text-muted">Initial Amount ($)</label>
               <input
                 type="number"
                 id="amount"
@@ -152,7 +152,7 @@ const Investments = () => {
               />
             </div>
             <div className="col-md-4">
-              <label htmlFor="tenure" className="form-label">Tenure (Years)</label>
+              <label htmlFor="tenure" className="form-label text-muted">Tenure (Years)</label>
               <input
                 type="number"
                 id="tenure"
@@ -163,7 +163,7 @@ const Investments = () => {
               />
             </div>
             <div className="col-md-4">
-              <label htmlFor="interest" className="form-label">Interest Rate (%)</label>
+              <label htmlFor="interest" className="form-label text-muted">Interest Rate (%)</label>
               <input
                 type="number"
                 id="interest"
@@ -177,6 +177,7 @@ const Investments = () => {
           <button
             className="btn btn-primary w-100"
             onClick={() => alert(`Future Value: $${calculateInvestment()}`)}
+            style={{ backgroundColor: "#b4dbdc", borderColor: "#08566e", color:"black" }}
           >
             Calculate
           </button>
@@ -184,14 +185,14 @@ const Investments = () => {
       </main>
 
       {/* Footer Navigation */}
-      <footer className="bg-primary text-white py-3">
+      <footer className="bg-[#08566e] text-[#b4dbdc] py-3">
         <div className="container">
           <ul className="d-flex justify-content-between list-unstyled">
-            <li><Link to="/" className="text-white">Home</Link></li>
-            <li><Link to="/transfer" className="text-white">Transfer</Link></li>
-            <li><Link to="/bills" className="text-white">Bills</Link></li>
-            <li><Link to="/invest" className="text-white">Invest</Link></li>
-            <li><Link to="/more" className="text-white">More</Link></li>
+            <li><Link to="/" className="text-[#b4dbdc]">Home</Link></li>
+            <li><Link to="/transfer" className="text-[#b4dbdc]">Transfer</Link></li>
+            <li><Link to="/bills" className="text-[#b4dbdc]">Bills</Link></li>
+            <li><Link to="/invest" className="text-[#b4dbdc]">Invest</Link></li>
+            <li><Link to="/more" className="text-[#b4dbdc]">More</Link></li>
           </ul>
         </div>
       </footer>

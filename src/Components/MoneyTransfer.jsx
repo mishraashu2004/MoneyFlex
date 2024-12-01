@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft, FiSearch, FiUser, FiDollarSign } from 'react-icons/fi';
+import AccountSelector from './AccountSelector.jsx';
 
 const MoneyTransfer = () => {
   const [recipient, setRecipient] = useState('');
@@ -22,7 +23,6 @@ const MoneyTransfer = () => {
   };
 
   const handleConfirmTransfer = () => {
-    // Implement the actual transfer logic here
     alert('Transfer successful!');
     setShowConfirmation(false);
     setRecipient('');
@@ -31,29 +31,29 @@ const MoneyTransfer = () => {
   };
 
   return (
-    <div className="d-flex flex-column min-vh-100 bg-light">
+    <div className="d-flex flex-column min-vh-100 bg-dark">
       {/* Header */}
-      <header className="bg-white shadow-sm p-4">
+      <header className="bg-[#08566e] shadow-sm p-4">
         <div className="container d-flex justify-content-between align-items-center">
-          <Link to="/" className="text-primary">
+          <Link to="/" className="text-light">
             <FiArrowLeft className="fs-2" />
           </Link>
-          <h1 className="fs-3 fw-bold">Money Transfer</h1>
+          <h1 className="fs-3 fw-bold text-light">Money Transfer</h1>
           <div></div>
         </div>
       </header>
 
       <main className="flex-grow-1 container py-5">
         {/* Transfer Form */}
-        <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-sm p-4 mb-4">
-          <div className="mb-3">
-            <label htmlFor="recipient" className="form-label">Recipient</label>
+        <form onSubmit={handleSubmit} className="bg-[#1a202c] rounded-lg shadow-lg p-5 mb-5 w-100">
+          <div className="mb-4">
+            <label htmlFor="recipient" className="form-label fs-5 text-[rgb(120,193,195)]">Recipient</label>
             <div className="input-group">
-              <span className="input-group-text"><FiSearch /></span>
+              <span className="input-group-text text-[rgb(120,193,195)]"><FiSearch /></span>
               <input
                 type="text"
                 id="recipient"
-                className="form-control"
+                className="form-control border-2 shadow-sm "
                 placeholder="Search by name, account, or mobile"
                 value={recipient}
                 onChange={(e) => setRecipient(e.target.value)}
@@ -62,14 +62,14 @@ const MoneyTransfer = () => {
             </div>
           </div>
 
-          <div className="mb-3">
-            <label htmlFor="amount" className="form-label">Amount</label>
+          <div className="mb-4">
+            <label htmlFor="amount" className="form-label fs-5 text-[rgb(120,193,195)]">Amount</label>
             <div className="input-group">
-              <span className="input-group-text"><FiDollarSign /></span>
+              <span className="input-group-text text-[#b4dbdc]">₹</span>
               <input
                 type="number"
                 id="amount"
-                className="form-control"
+                className="form-control border-2 shadow-sm "
                 placeholder="Enter amount"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
@@ -80,11 +80,11 @@ const MoneyTransfer = () => {
             </div>
           </div>
 
-          <div className="mb-3">
-            <label htmlFor="paymentMethod" className="form-label">Payment Method</label>
+          <div className="mb-4">
+            <label htmlFor="paymentMethod" className="form-label fs-5 text-[#b4dbdc]">Payment Method</label>
             <select
               id="paymentMethod"
-              className="form-select"
+              className="form-select border-2 shadow-sm rounded-pill"
               value={paymentMethod}
               onChange={(e) => setPaymentMethod(e.target.value)}
               required
@@ -96,25 +96,31 @@ const MoneyTransfer = () => {
             </select>
           </div>
 
-          <button type="submit" className="btn btn-primary w-100">
+          <AccountSelector />
+
+          <button
+            type="submit"
+            className="btn btn-primary w-100 py-3 rounded-pill shadow-sm hover:shadow-lg transition duration-300 ease-in-out"
+            style={{ backgroundColor: '#08566e' }}
+          >
             Transfer Money
           </button>
         </form>
-
+       
         {/* Recent Transfers */}
-        <div className="bg-white rounded-lg shadow-sm p-4">
-          <h2 className="fs-4 fw-semibold mb-4">Recent Transfers</h2>
-          <ul className="list-group">
+        <div className="bg-[#1a202c] rounded-lg shadow-lg p-4 w-100">
+          <h2 className="fs-4 fw-semibold mb-4 text-[rgb(120,193,195)]">Recent Transfers</h2>
+          <ul className="list-group ">
             {recentTransfers.map(transfer => (
-              <li key={transfer.id} className="list-group-item d-flex justify-content-between align-items-center">
-                <div className="d-flex align-items-center">
+              <li key={transfer.id} className="list-group-item d-flex justify-content-between align-items-center text-[rgb(120,193,195)]">
+                <div className="d-flex align-items-center ">
                   <FiUser className="text-muted me-2" />
-                  <div>
-                    <p className="mb-0">{transfer.name}</p>
+                  <div >
+                    <p className="mb-0 fw-medium">{transfer.name}</p>
                     <p className="text-muted small">{transfer.accountNumber}</p>
                   </div>
                 </div>
-                <span className="fw-semibold">${transfer.amount.toFixed(2)}</span>
+                <span className="fw-semibold">₹{transfer.amount.toFixed(2)}</span>
               </li>
             ))}
           </ul>
@@ -122,7 +128,7 @@ const MoneyTransfer = () => {
       </main>
 
       {/* Footer Navigation */}
-      <footer className="bg-primary text-white py-3">
+      <footer className="bg-[#08566e] text-white py-4 mt-auto">
         <div className="container">
           <ul className="nav justify-content-between">
             <li className="nav-item"><Link to="/" className="nav-link text-white">Home</Link></li>
@@ -138,7 +144,7 @@ const MoneyTransfer = () => {
       {showConfirmation && (
         <div className="modal d-block" tabIndex="-1" role="dialog">
           <div className="modal-dialog" role="document">
-            <div className="modal-content">
+            <div className="modal-content bg-[#2d3748] text-[#b4dbdc]">
               <div className="modal-header">
                 <h5 className="modal-title">Confirm Transfer</h5>
                 <button
@@ -149,7 +155,7 @@ const MoneyTransfer = () => {
                 ></button>
               </div>
               <div className="modal-body">
-                <p>Are you sure you want to transfer ${amount} to {recipient}?</p>
+                <p className="fs-5 text-[#b4dbdc]">Are you sure you want to transfer ₹{amount} to {recipient}?</p>
               </div>
               <div className="modal-footer">
                 <button
@@ -163,6 +169,7 @@ const MoneyTransfer = () => {
                   type="button"
                   className="btn btn-primary"
                   onClick={handleConfirmTransfer}
+                  style={{ backgroundColor: '#08566e' }}
                 >
                   Confirm
                 </button>
