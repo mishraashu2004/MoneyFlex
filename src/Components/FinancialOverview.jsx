@@ -8,7 +8,7 @@ const FinancialOverview = () => {
         {/* Account Balance */}
         <div className="bg-[#1a202c] p-6 rounded-lg shadow-md">
           <h3 className="font-medium text-[#b4dbdc]">Account Balance</h3>
-          <p className="text-lg font-semibold">₹50,000.00</p>
+          <p className="text-lg font-semibold">₹1,55,000.00</p>
         </div>
 
         {/* Pending Payments */}

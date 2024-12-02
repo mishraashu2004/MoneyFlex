@@ -5,7 +5,9 @@ import QuickActions from './Components/QuickActions';
 import FeaturedProducts from './Components/FeaturedProducts';
 import FinancialNews from './Components/FinancialNews';
 import AccountSelector from './Components/AccountSelector';
-
+import GeminiChatBot from './ChatBot';
+import './Chatbot.css'
+import Chatbot from 'react-chatbot-kit';
 const HomePage = () => {
   return (
     <div className="flex flex-col min-h-screen bg-[#1a202c] text-[#b4dbdc]">
@@ -39,6 +41,7 @@ const HomePage = () => {
         <div className="mt-10">
           <FeaturedProducts />
         </div>
+        <GeminiChatBot/>
 
         {/* Optional Financial News Section */}
         {/* <FinancialNews /> Uncomment if you need this */}

@@ -2,9 +2,9 @@ import React from 'react';
 import ProgressTracker from './ProgressTracker';
 
 const goals = [
-  { id: 1, name: 'Vacation', targetAmount: 1000, savedAmount: 450, dueDate: '2024-12-31' },
-  { id: 2, name: 'Car Purchase', targetAmount: 5000, savedAmount: 1200, dueDate: '2025-06-30' },
-  { id: 3, name: 'Emergency Fund', targetAmount: 3000, savedAmount: 1500, dueDate: '2024-10-15' }
+  { id: 1, name: 'Vacation', targetAmount: 10000, savedAmount: 4500, dueDate: '2024-12-31' },
+  { id: 2, name: 'Car Purchase', targetAmount: 50000, savedAmount: 12000, dueDate: '2025-06-30' },
+  { id: 3, name: 'Emergency Fund', targetAmount: 30000, savedAmount: 15000, dueDate: '2024-10-15' }
 ];
 
 const GoalDashboard = () => {

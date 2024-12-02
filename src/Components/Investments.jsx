@@ -70,7 +70,7 @@ const Investments = () => {
           <div className="d-flex justify-content-between align-items-center mb-4">
             <div>
               <p className="text-muted">Total Value</p>
-              <p className="fs-3 fw-bold text-[#b4dbdc]">${portfolioValue.toLocaleString()}</p>
+              <p className="fs-3 fw-bold text-[#b4dbdc]">₹{portfolioValue.toLocaleString()}</p>
             </div>
             <div className={`d-flex align-items-center ${portfolioChange >= 0 ? 'text-success' : 'text-danger'}`}>
               {portfolioChange >= 0 ? <FiTrendingUp className="me-1" /> : <FiTrendingDown className="me-1" />}
@@ -124,7 +124,7 @@ const Investments = () => {
                   <li key={index} className="d-flex justify-content-between align-items-center mb-3">
                     <div>
                       <p className="fw-semibold">{rec.name}</p>
-                      <p className="text-muted small text-fuchsia-50">1{rec.type}</p>
+                      <p className="text-muted small text-fuchsia-50">{rec.type}</p>
                     </div>
                     <span className={`badge ${rec.risk === 'High' ? 'bg-danger' : rec.risk === 'Medium' ? 'bg-warning' : 'bg-success'}`}>
                       {rec.risk} Risk
@@ -141,7 +141,7 @@ const Investments = () => {
           <h2 className="fs-4 fw-semibold mb-4 text-[#b4dbdc]">Investment Calculator</h2>
           <div className="row g-3 mb-4">
             <div className="col-md-4">
-              <label htmlFor="amount" className="form-label text-muted">Initial Amount ($)</label>
+              <label htmlFor="amount" className="form-label text-muted">Initial Amount (₹)</label>
               <input
                 type="number"
                 id="amount"
@@ -176,7 +176,7 @@ const Investments = () => {
           </div>
           <button
             className="btn btn-primary w-100"
-            onClick={() => alert(`Future Value: $${calculateInvestment()}`)}
+            onClick={() => alert(`Future Value: ₹${calculateInvestment()}`)}
             style={{ backgroundColor: "#b4dbdc", borderColor: "#08566e", color:"black" }}
           >
             Calculate
