@@ -2,12 +2,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './HomePage';
-import AccountOverview from './components/AccountOverview';
-import MoneyTransfer from './components/MoneyTransfer';
-import BillPayments from './components/BillPayments';
-import Investments from './components/Investments';
-import CardServices from './components/CardServices'; // Import the new CardServices component
-import BudgetingPage from './Components/BudgetngPage';
+import AccountOverview from './components/AccountOverview.jsx';
+import MoneyTransfer from './components/MoneyTransfer.jsx';
+import BillPayments from './components/BillPayments.jsx';
+import Investments from './components/Investments.jsx';
+import CardServices from './components/CardServices.jsx'; // Import the new CardServices component
+import BudgetingPage from './Components/BudgetngPage.jsx';
 
 const App = () => {
   return (
