@@ -6,7 +6,7 @@ import FeaturedProducts from './Components/FeaturedProducts';
 import FinancialNews from './Components/FinancialNews';
 
 import GeminiChatBot from './ChatBot';
-import './Chatbot.css';
+
 
 // Enhanced Loading Component
 const LoadingSpinner = ({ message = "Loading your financial dashboard..." }) => (
