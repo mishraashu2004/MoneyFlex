@@ -3,11 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './HomePage';
 import AccountOverview from "./Components/AccountOverview.jsx";
-import MoneyTransfer from './components/MoneyTransfer.jsx';
-import BillPayments from './components/BillPayments.jsx';
-import Investments from './components/Investments.jsx';
-import CardServices from './components/CardServices.jsx'; 
-import BudgetingPage from "./components/BudgetingPage.jsx";
+import MoneyTransfer from "./Components/MoneyTransfer.jsx";
+import BillPayments from "./Components/BillPayments.jsx";
+import Investments from "./Components/Investments.jsx";
+import CardServices from "./Components/CardServices.jsx"; 
+import BudgetingPage from "./Components/BudgetingPage.jsx";
 
 const App = () => {
   return (
