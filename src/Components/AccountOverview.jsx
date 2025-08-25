@@ -30,7 +30,7 @@ const AccountOverview = () => {
   const [showBalance, setShowBalance] = useState(true);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [accountData, setAccountData] = useState({
-    name: 'John Doe',
+    name: 'John ',
     email: 'johndoe@example.com',
     balance: 125000.50,
     accountNumber: '****-****-**34-5678',
