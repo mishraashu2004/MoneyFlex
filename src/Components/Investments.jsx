@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft, FiTrendingUp, FiTrendingDown } from 'react-icons/fi';
 import { LineChart, Line, PieChart, Pie, Cell, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts';
+import Navigation from './Navigation';
 
 const Investments = () => {
   const [calculatorValues, setCalculatorValues] = useState({
@@ -53,15 +54,9 @@ const Investments = () => {
   return (
     <div className="d-flex flex-column min-vh-100 bg-dark text-light">
       {/* Header */}
-      <header className="bg-[#08566e] shadow-sm py-3">
-        <div className="container d-flex align-items-center justify-content-between">
-          <Link to="/" className="text-[#b4dbdc]">
-            <FiArrowLeft className="fs-2" />
-          </Link>
-          <h1 className="fs-3 fw-bold text-[#b4dbdc]">Investments</h1>
-          <div></div>
-        </div>
-      </header>
+      <Navigation/>
+
+      
 
       <main className="flex-grow-1 container py-5">
         {/* Portfolio Overview */}
@@ -185,17 +180,7 @@ const Investments = () => {
       </main>
 
       {/* Footer Navigation */}
-      <footer className="bg-[#08566e] text-[#b4dbdc] py-3">
-        <div className="container">
-          <ul className="d-flex justify-content-between list-unstyled">
-            <li><Link to="/" className="text-[#b4dbdc]">Home</Link></li>
-            <li><Link to="/transfer" className="text-[#b4dbdc]">Transfer</Link></li>
-            <li><Link to="/bills" className="text-[#b4dbdc]">Bills</Link></li>
-            <li><Link to="/invest" className="text-[#b4dbdc]">Invest</Link></li>
-            <li><Link to="/more" className="text-[#b4dbdc]">More</Link></li>
-          </ul>
-        </div>
-      </footer>
+     
     </div>
   );
 };

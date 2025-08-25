@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft, FiSearch, FiPlus, FiZap, FiWifi, FiUmbrella, FiToggleLeft } from 'react-icons/fi';
+import Navigation from './Navigation';
 
 const BillPayments = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -33,15 +34,7 @@ const BillPayments = () => {
 
   return (
     <div className="d-flex flex-column min-vh-100 bg-[#1a202c]">
-      {/* Header */}
-      <header className="bg-[#08566e] shadow-md p-4">
-        <div className="container d-flex justify-content-between align-items-center">
-          <Link to="/" className="text-[#b4dbdc] hover:text-[#1a202c] transition-colors" aria-label="Go back">
-            <FiArrowLeft className="fs-3" />
-          </Link>
-          <h1 className="h4 mb-0 text-[#b4dbdc] font-semibold">Bill Payments</h1>
-        </div>
-      </header>
+<Navigation/>
 
       {/* Main Content */}
       <main className="flex-grow-1 container px-4 py-5">
@@ -133,18 +126,6 @@ const BillPayments = () => {
         </div>
       </main>
 
-      {/* Footer Navigation */}
-      <nav className="bg-[#08566e] text-[#b4dbdc] py-4 shadow-md">
-        <div className="container">
-          <ul className="d-flex justify-content-between mb-0">
-            <li><Link to="/" className="text-[#b4dbdc] hover:text-[#1a202c] transition-colors">Home</Link></li>
-            <li><Link to="/transfer" className="text-[#b4dbdc] hover:text-[#1a202c] transition-colors">Transfer</Link></li>
-            <li><Link to="/bills" className="text-[#b4dbdc] hover:text-[#1a202c] transition-colors">Bills</Link></li>
-            <li><Link to="/invest" className="text-[#b4dbdc] hover:text-[#1a202c] transition-colors">Invest</Link></li>
-            <li><Link to="/more" className="text-[#b4dbdc] hover:text-[#1a202c] transition-colors">More</Link></li>
-          </ul>
-        </div>
-      </nav>
     </div>
   );
 };

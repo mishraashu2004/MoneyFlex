@@ -3,6 +3,7 @@ import GoalDashboard from './GoalDashboard';
 import CreateGoalForm from './CreateGoalForm';
 import SpendingInsights from './SpendingInsights';
 import BudgetRecommendations from './BudgetRecommendations';
+import Navigation from './Navigation';
 
 const BudgetingPage = () => {
   const [goals, setGoals] = useState([]);
@@ -14,7 +15,8 @@ const BudgetingPage = () => {
 
   return (
     <div className="min-vh-100 bg-dark text-white">
-      <div className="container mt-5">
+      <div >
+        <Navigation/>
         <h1 className="text-center mb-4 text-[#b4dbdc]">Budgeting Dashboard</h1>
 
         {/* Create New Goal Section */}

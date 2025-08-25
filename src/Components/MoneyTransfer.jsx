@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft, FiSearch, FiUser, FiDollarSign } from 'react-icons/fi';
-import AccountSelector from './AccountSelector.jsx';
+
+import Navigation from './Navigation.jsx';
 
 const MoneyTransfer = () => {
   const [recipient, setRecipient] = useState('');
@@ -33,15 +34,7 @@ const MoneyTransfer = () => {
   return (
     <div className="d-flex flex-column min-vh-100 bg-dark">
       {/* Header */}
-      <header className="bg-[#08566e] shadow-sm p-4">
-        <div className="container d-flex justify-content-between align-items-center">
-          <Link to="/" className="text-light">
-            <FiArrowLeft className="fs-2" />
-          </Link>
-          <h1 className="fs-3 fw-bold text-light">Money Transfer</h1>
-          <div></div>
-        </div>
-      </header>
+      <Navigation/>
 
       <main className="flex-grow-1 container py-5">
         {/* Transfer Form */}
@@ -96,7 +89,6 @@ const MoneyTransfer = () => {
             </select>
           </div>
 
-          <AccountSelector />
 
           <button
             type="submit"
@@ -128,17 +120,7 @@ const MoneyTransfer = () => {
       </main>
 
       {/* Footer Navigation */}
-      <footer className="bg-[#08566e] text-white py-4 mt-auto">
-        <div className="container">
-          <ul className="nav justify-content-between">
-            <li className="nav-item"><Link to="/" className="nav-link text-white">Home</Link></li>
-            <li className="nav-item"><Link to="/transfer" className="nav-link text-white">Transfer</Link></li>
-            <li className="nav-item"><Link to="/bills" className="nav-link text-white">Bills</Link></li>
-            <li className="nav-item"><Link to="/invest" className="nav-link text-white">Invest</Link></li>
-            <li className="nav-item"><Link to="/more" className="nav-link text-white">More</Link></li>
-          </ul>
-        </div>
-      </footer>
+
 
       {/* Confirmation Modal */}
       {showConfirmation && (
