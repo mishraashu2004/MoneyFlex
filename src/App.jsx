@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './HomePage';
-import AccountOverview from "./components/AccountOverview.jsx";
+import AccountOverview from "./Components/AccountOverview.jsx";
 import MoneyTransfer from './components/MoneyTransfer.jsx';
 import BillPayments from './components/BillPayments.jsx';
 import Investments from './components/Investments.jsx';
